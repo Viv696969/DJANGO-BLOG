@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+   
+<h1>create blog</h1>
+<div class="mb-3">
+    {% if user.is_authenticated %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+{{form.as_p}}
+<button type="submit"  class="btn btn-dark">CREATE</button>
+</form>
+
+{% else %}
+<h1> PLZ <a href="{% url 'login' %}">LOGIN</a> </h1>
+{% endif %}
+
+
+</div>
+
+
+{% endblock %}

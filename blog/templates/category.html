@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated  %}
+
+{% if  blogs %}
+{% for data in blogs %}<br>
+{{data.title}}<br>
+{{data.body}}<br>
+{{data.author}}<br>
+{{data.blog_crated}}
+    <hr>
+    {% endfor %}
+
+    {% else %}
+<h1>no blogs of this category</h1>
+
+{% endif %}
+<form action="{% url 'home' %}">
+    <button type="submit" class="btn btn-primary">HOME</button>
+
+</form>
+{% else %}
+<h1> PLZ <a href="{% url 'login' %}">LOGIN</a> </h1>
+{% endif %}
+
+{% endblock %}

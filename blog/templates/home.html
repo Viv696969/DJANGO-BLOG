@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>hello
+    {{user.username}}
+</h1>
+{% for b in blog %}
+
+
+<!-- <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if b.image %}
+        <img src="{{b.image.url }}" class="img-fluid rounded-start" alt="img">
+         {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{b.title}}</h5>
+          <p class="card-text">{{b.body|safe|slice:"0:30"}}</p>
+          <p class="card-text"><small class="text-muted">{{b.blog_crated|date:"DATETIME_FORMAT"}}/small></p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- <div  class="card text-dark bg-warning mb-3" style="width: 18rem;">
+    {% if b.image %}
+    <img src="{{b.image.url }}" class="card-img-top" alt="img">
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{b.title}}</h5>
+      <p class="card-text">{{b.body|safe|slice:"0:30"}}</p>
+      <br>
+      <BR>
+        <p class="card-text"><small class="text-muted">{{b.blog_crated|date:"DATETIME_FORMAT"}}</small></p>
+        <form method="get"></form>
+      <a href="{% url 'article' b.pk %}" class="btn btn-primary">EXPLORE</a>
+    </form>
+    </div>
+  </div> -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div  class="card text-dark bg-warning mb-3" style="width: 18rem;">
+            {% if b.image %}
+            <img src="{{b.image.url }}" class="card-img-top" alt="img">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{b.title}}</h5>
+              <p class="card-text">{{b.body|safe|slice:"0:30"}}</p>
+              <br>
+              <BR>
+                <p class="card-text"><small class="text-muted">{{b.blog_crated|date:"DATETIME_FORMAT"}}</small></p>
+                <form method="get"></form>
+              <a href="{% url 'article' b.pk %}" class="btn btn-primary">EXPLORE</a>
+            </form>
+            </div>
+          </div>
+      </div>
+      <div class="col">
+        <div  class="card text-dark bg-warning mb-3" style="width: 18rem;">
+            {% if b.image %}
+            <img src="{{b.image.url }}" class="card-img-top" alt="img">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{b.title}}</h5>
+              <p class="card-text">{{b.body|safe|slice:"0:30"}}</p>
+              <br>
+              <BR>
+                <p class="card-text"><small class="text-muted">{{b.blog_crated|date:"DATETIME_FORMAT"}}</small></p>
+                <form method="get"></form>
+              <a href="{% url 'article' b.pk %}" class="btn btn-primary">EXPLORE</a>
+            </form>
+            </div>
+          </div>
+      </div>
+      <div class="col">
+        <div  class="card text-dark bg-warning mb-3" style="width: 18rem;">
+            {% if b.image %}
+            <img src="{{b.image.url }}" class="card-img-top" alt="img">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{b.title}}</h5>
+              <p class="card-text">{{b.body|safe|slice:"0:30"}}</p>
+              <br>
+              <BR>
+                <p class="card-text"><small class="text-muted">{{b.blog_crated|date:"DATETIME_FORMAT"}}</small></p>
+                <form method="get"></form>
+              <a href="{% url 'article' b.pk %}" class="btn btn-primary">EXPLORE</a>
+            </form>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

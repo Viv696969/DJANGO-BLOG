@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+   
+<h1>deleteblog</h1>
+<div class="mb-3">
+<form method="post">
+    {% csrf_token %}
+    {{blog.title}}
+<button type="submit"  class="btn btn-dark">Delete</button>
+</form>
+</div>
+{% else %}
+<h1> PLZ <a href="{% url 'login' %}">LOGIN</a> </h1>
+{% endif %}
+ 
+
+{% endblock %}

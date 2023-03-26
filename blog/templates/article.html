@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+   
+<h1>your blog</h1>
+
+{{blog.title}}
+<hr>
+<h3>BY: <a href="{% url 'userprofile' blog.author.profile.id %}" >{{blog.author.username}}</a></h3>
+<br>
+<h5>uploaded: {{blog.blog_crated|date:"DATETIME_FORMAT"}}</h5><br>
+<p>{{blog.body|safe}}</p>    
+<br>
+<br>
+{% if blog.image %}
+<img src="{{blog.image.url}}" height="350" alt="blog_image">
+{% endif %}
+<br>
+{% if user.is_authenticated %}
+    {% if user.id == blog.author.id %}
+        <a href="{% url 'update' blog.pk %}">Update blog</a>
+        <form action="{% url 'delete' blog.pk %}" method="post">
+            {% csrf_token %}<button type="submit">DElete</button></form>
+    {% endif %}
+
+        <form action="{% url 'like' blog.pk %}" method="post">
+            {% csrf_token %}
+            {% if liked %}
+                <button name="like_id" value="{{blog.id}}" class="btn btn-primary">
+                    
+                        <i class="bi bi-hand-thumbs-down-fill"></i>
+                </button>
+            {% else %}
+                    <button name="like_id" value="{{blog.id}}" class="btn btn-primary">
+                        <i class="bi bi-hand-thumbs-up-fill"></i>
+
+                    </button>
+            {% endif%}
+            
+            {{likes}} Likes
+
+        </form>
+
+
+        {% else %}
+    <h1>  <a href="{% url 'login' %}">LOGIN</a> </h1>
+{% endif %}
+
+{% endblock %}

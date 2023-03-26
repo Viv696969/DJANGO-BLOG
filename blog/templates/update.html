@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}          
+    {% if user.is_authenticated %}
+    {% if user.id == blog.author.id %}
+
+    
+   
+<h1>update blog</h1>
+<div class="mb-3">
+<form method="post">
+    {% csrf_token %}
+    {{form.media}}
+{{form.as_p}}
+<button type="submit"  class="btn btn-dark">update</button>
+</form>
+</div>
+{% else %}
+<h1>YOU ARE RESTRICTED TO VISIT THIS</h1>
+{% endif %}
+{% else %}
+<h1> PLZ <a href="{% url 'login' %}">LOGIN</a> </h1>
+{% endif %}
+
+
+{% endblock %}

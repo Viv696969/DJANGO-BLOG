@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if exist %}
+
+{{obj.user.username}}
+{{obj.bio}}
+{{obj.email}}
+{% if obj.profile_pic %}
+<img src="{{obj.profile_pic.url}}" alt="profile pic" height="200">
+{% endif %}
+
+{% for d in blogs %}
+{{d.title}}<br>
+{{d.body|safe}}
+{% if d.image %}
+<img src="{{d.image.url}}" alt="profile pic" height="200">
+{% endif %}
+
+<hr>
+
+{% endfor %}
+<a href="{% url 'editprofile' %}" class="btn btn-dark">EDIT PROFILE </a>
+{% else %}
+<h1>You Dont Have One !</h1>
+
+<a href="{% url 'createprofile' %}" class="btn btn-primary">CREATE NOW</a>
+{% endif %}
+<a href="{% url 'home' %}" class="btn btn-dark">HOME</a>
+
+{% endblock %}

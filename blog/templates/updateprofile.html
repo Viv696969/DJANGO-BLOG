@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    {% if user.profile.profile_pic %}
+    <img src="{{user.profile.profile_pic.url}}" alt="profilepic" class="rounded-circle" height="60">
+    {% endif %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-danger">EDIT </button>
+    <a href="{% url 'home' %}" class="btn btn-dark">HOME</a>
+</form>
+
+
+{% endblock %}
